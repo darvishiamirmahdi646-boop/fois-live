@@ -313,6 +313,55 @@ bindHold('leftBtn','left');bindHold('rightBtn','right');
 document.getElementById('jumpBtn').addEventListener('pointerdown',e=>{e.preventDefault();if(player.on&&!won)player.vy=-10.5;});
 document.getElementById('restartPlatformer').addEventListener('click',reset);
 loadLevel();loop();
+<div id="fois-game" style="background:#111;color:white;padding:20px;border-radius:16px;text-align:center;font-family:sans-serif">
+  <h2 style="color:#d8ff3e">🎮 FOIS: PAINT TO HIDE</h2>
+  <p>رنگت رو با محیط یکی کن و قبل از تمام شدن زمان فرار کن!</p>
+  <p>زمان: <b id="fois-time">20</b> ثانیه | امتیاز: <b id="fois-score">0</b></p>
+  <div id="fois-scene" style="height:180px;background:#3b7a45;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:35px;font-size:48px">
+    <span id="fois-player">🧍</span><span id="fois-guard">👮</span>
+  </div>
+  <p>رنگ مخفی‌شدن رو انتخاب کن:</p>
+  <div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap">
+    <button onclick="foisColor('#3b7a45')">🟢 سبز</button>
+    <button onclick="foisColor('#777777')">⚪ خاکستری</button>
+    <button onclick="foisColor('#c49a60')">🟤 شنی</button>
+  </div>
+  <p id="fois-message">شروع کن و رنگ مناسب رو انتخاب کن!</p>
+  <button onclick="foisStart()" style="background:#d8ff3e;padding:12px 24px;border:0;border-radius:8px;font-weight:bold">شروع بازی</button>
+</div>
+<script>
+let foisInterval, foisSeconds=20, foisPoints=0, foisHidden=false;
+function foisColor(color){
+  document.getElementById('fois-player').style.color=color;
+  const bg=getComputedStyle(document.getElementById('fois-scene')).backgroundColor;
+  const rgb=color.match(/\w\w/g).map(x=>parseInt(x,16));
+  const target=bg.match(/\d+/g).slice(0,3).map(Number);
+  foisHidden=rgb.every((v,i)=>Math.abs(v-target[i])<35);
+  document.getElementById('fois-message').textContent=
+    foisHidden?'عالی! با محیط هماهنگ شدی!':'خطر! رنگت با محیط فرق داره!';
+}
+function foisStart(){
+  clearInterval(foisInterval);
+  foisSeconds=20; foisPoints=0;
+  document.getElementById('fois-time').textContent=foisSeconds;
+  document.getElementById('fois-score').textContent=foisPoints;
+  document.getElementById('fois-message').textContent='نگهبان داره می‌گرده؛ مخفی شو!';
+  foisInterval=setInterval(()=>{
+    foisSeconds--;
+    document.getElementById('fois-time').textContent=foisSeconds;
+    if(foisHidden) {
+      foisPoints++;
+      document.getElementById('fois-score').textContent=foisPoints;
+    }
+    if(foisSeconds<=0){
+      clearInterval(foisInterval);
+      document.getElementById('fois-message').textContent=
+        foisPoints>8?'🏆 برنده شدی!':'😅 نگهبان پیدات کرد! دوباره تلاش کن.';
+    }
+  },1000);
+}
+</script>
+
 })();
 '''
 s=s.replace('</body>', '<script>'+script+'</script>\n</body>')
