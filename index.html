@@ -236,17 +236,7 @@ async function send() {
   } catch (e) {
     say("پیام ارسال نشد: " + e.message);
   } finally {
-    $("sendBtn").disabled = false;
-  }
-}
-
-$("startBtn").addEventListener("click", start);
-$("openBtn").addEventListener("click", openFriend);
-$("refreshBtn").addEventListener("click", refresh);
-$("sendBtn").addEventListener("click", send);
-$("message").addEventListener("keydown", e => {
-  if (e.key === "Enter") send();
-});import re, os, zipfile
+    $("sendBtn").disabled = false;import re, os, zipfile
 p='/mnt/data/FOIS_index.html'
 s=open(p,encoding='utf-8').read()
 marker='<section id="game"'
@@ -312,7 +302,3 @@ open('/mnt/data/FOIS_index.html','w',encoding='utf-8').write(s)
 with zipfile.ZipFile('/mnt/data/FOIS_website_complete.zip','w',zipfile.ZIP_DEFLATED) as z:
     z.write('/mnt/data/FOIS_index.html','index.html')
 print("updated",len(s))
-
-</script>
-</body>
-</html>
