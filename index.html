@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -15,13 +16,26 @@ nav{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;padding:15px;bac
 nav a{color:#fff;text-decoration:none}
 nav a:hover{color:#d8a4ff}
 main{max-width:1000px;margin:auto;padding:15px}
-.intro,.video-card{background:#180e27;border:1px solid #512477;border-radius:16px;padding:16px;margin-bottom:18px}
+.intro,.video-card,.chat-card{background:#180e27;border:1px solid #512477;border-radius:16px;padding:16px;margin-bottom:18px}
 h2{font:28px Lalezar;color:#d8a4ff;margin:0 0 12px}
 .videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
 .player{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden}
 .player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .open{display:inline-block;color:#e3c5ff;margin-top:12px;text-decoration:none}
+input,button{font:inherit;padding:12px;border-radius:10px;border:1px solid #69408b}
+input{width:100%;background:#0d0815;color:white;margin:6px 0 12px}
+button{background:#a855f7;color:white;cursor:pointer}
+button:disabled{opacity:.5}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.row button{flex:1}
+.hint{color:#d7c3e8;font-size:13px;line-height:1.9}
+#status{padding:10px;background:#10091a;border-radius:8px;overflow-wrap:anywhere}
+#messages{height:280px;overflow:auto;background:#0d0815;border-radius:10px;padding:10px;margin:12px 0}
+.msg{padding:10px;margin:8px 0;border-radius:10px;background:#28183b;overflow-wrap:anywhere}
+.mine{background:#49236c}
+.msg small{display:block;color:#d7c3e8;margin-top:5px}
 footer{text-align:center;padding:25px;background:#120a1d;color:#cbb6dc}
+[hidden]{display:none!important}
 </style>
 </head>
 <body>
@@ -33,6 +47,7 @@ footer{text-align:center;padding:25px;background:#120a1d;color:#cbb6dc}
 <nav>
 <a href="#home">خانه</a>
 <a href="#videos">ویدیوها</a>
+<a href="#chat">چت خصوصی</a>
 <a href="#about">درباره ما</a>
 </nav>
 <main>
@@ -40,72 +55,198 @@ footer{text-align:center;padding:25px;background:#120a1d;color:#cbb6dc}
 <h2>💜 خوش اومدی!</h2>
 <p>به FOIS by mahdi live خوش اومدی؛ ویدیوها رو انتخاب کن و تماشا کن.</p>
 </section>
+
 <section id="videos">
 <h2>🎬 ویدیوها</h2>
 <div class="videos">
-
-<div class="video-card">
-<h2>ویدیو ۱</h2>
-<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/gtjge06/vt/frame" title="ویدیو ۱" allowfullscreen loading="lazy"></iframe></div>
-<a class="open" href="https://www.aparat.com/v/gtjge06" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
-</div>
-
-<div class="video-card">
-<h2>ویدیو ۲</h2>
-<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/ytnfz5f/vt/frame" title="ویدیو ۲" allowfullscreen loading="lazy"></iframe></div>
-<a class="open" href="https://www.aparat.com/v/ytnfz5f" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
-</div>
-
-<div class="video-card">
-<h2>ویدیو ۳</h2>
-<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/iiu45zz/vt/frame" title="ویدیو ۳" allowfullscreen loading="lazy"></iframe></div>
-<a class="open" href="https://www.aparat.com/v/iiu45zz" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
-</div>
-
-<div class="video-card">
-<h2>ویدیو ۴</h2>
-<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/rbha0u8/vt/frame" title="ویدیو ۴" allowfullscreen loading="lazy"></iframe></div>
-<a class="open" href="https://www.aparat.com/v/rbha0u8" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
-</div>
-
-<div class="video-card">
-<h2>ویدیو ۵</h2>
-<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/mjd769m/vt/frame" title="ویدیو ۵" allowfullscreen loading="lazy"></iframe></div>
-<a class="open" href="https://www.aparat.com/v/mjd769m" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
-</div>
-
-<div class="video-card">
-<h2>ویدیو ۶</h2>
-<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/vyc344n/vt/frame" title="ویدیو ۶" allowfullscreen loading="lazy"></iframe></div>
-<a class="open" href="https://www.aparat.com/v/vyc344n" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
-</div>
-
-<div class="video-card">
-<h2>ویدیو ۷</h2>
-<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/jfp5389/vt/frame" title="ویدیو ۷" allowfullscreen loading="lazy"></iframe></div>
-<a class="open" href="https://www.aparat.com/v/jfp5389" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
-</div>
-
-<div class="video-card">
-<h2>ویدیو ۸</h2>
-<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/a13j4en/vt/frame" title="ویدیو ۸" allowfullscreen loading="lazy"></iframe></div>
-<a class="open" href="https://www.aparat.com/v/a13j4en" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
-</div>
-
-<div class="video-card">
-<h2>ویدیو ۹</h2>
-<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/kae9h08/vt/frame" title="ویدیو ۹" allowfullscreen loading="lazy"></iframe></div>
-<a class="open" href="https://www.aparat.com/v/kae9h08" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
-</div>
-
+<div class="video-card"><h2>ویدیو ۱</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/gtjge06/vt/frame" title="ویدیو ۱" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/gtjge06" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
+<div class="video-card"><h2>ویدیو ۲</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/ytnfz5f/vt/frame" title="ویدیو ۲" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/ytnfz5f" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
+<div class="video-card"><h2>ویدیو ۳</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/iiu45zz/vt/frame" title="ویدیو ۳" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/iiu45zz" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
+<div class="video-card"><h2>ویدیو ۴</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/rbha0u8/vt/frame" title="ویدیو ۴" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/rbha0u8" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
+<div class="video-card"><h2>ویدیو ۵</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/mjd769m/vt/frame" title="ویدیو ۵" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/mjd769m" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
+<div class="video-card"><h2>ویدیو ۶</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/vyc344n/vt/frame" title="ویدیو ۶" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/vyc344n" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
+<div class="video-card"><h2>ویدیو ۷</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/jfp5389/vt/frame" title="ویدیو ۷" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/jfp5389" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
+<div class="video-card"><h2>ویدیو ۸</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/a13j4en/vt/frame" title="ویدیو ۸" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/a13j4en" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
+<div class="video-card"><h2>ویدیو ۹</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/kae9h08/vt/frame" title="ویدیو ۹" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/kae9h08" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
 </div>
 </section>
+
+<section class="chat-card" id="chat">
+<h2>💬 چت خصوصی FOIS</h2>
+<p class="hint">نام کاربری انگلیسی ۳ تا ۲۰ حرفی بساز. هر دو نفر باید حداقل یک بار وارد چت شوند.</p>
+<div id="setup">
+<input id="username" maxlength="20" placeholder="نام کاربری تو">
+<button id="startBtn">ورود به چت</button>
+</div>
+<div id="chatArea" hidden>
+<p>نام تو: <b id="myName"></b></p>
+<input id="recipient" maxlength="20" placeholder="نام کاربری دوستت">
+<div class="row">
+<button id="openBtn">باز کردن گفتگو</button>
+<button id="refreshBtn">تازه‌سازی</button>
+</div>
+<div id="messages" aria-live="polite"></div>
+<input id="message" maxlength="1000" placeholder="پیامت رو بنویس...">
+<button id="sendBtn">ارسال پیام</button>
+</div>
+<p id="status">برای شروع نام کاربری بساز.</p>
+<p class="hint">ورود ناشناس است؛ پاک کردن داده‌های مرورگر ممکن است دسترسی به حساب قبلی را از بین ببرد.</p>
+</section>
+
 <section class="intro" id="about">
 <h2>درباره FOIS</h2>
 <p>FOIS by mahdi live؛ خونه‌ی ویدیوهای گیمینگ و سرگرمی 💜</p>
 </section>
 </main>
 <footer>ساخته‌شده با 💜 برای FOIS by mahdi live</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://hcnicxftvsnvmwursaev.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_gLbLXjZO-IkHks0A86iSgw_x6K9CbF1";
+
+const $ = id => document.getElementById(id);
+const say = text => $("status").textContent = text;
+const valid = name => /^[a-zA-Z0-9_]{3,20}$/.test(name);
+
+let db, user, myName, friend;
+
+async function start() {
+  const name = $("username").value.trim().toLowerCase();
+  if (!valid(name)) return say("نام باید ۳ تا ۲۰ حرف انگلیسی، عدد یا زیرخط باشد.");
+  $("startBtn").disabled = true;
+
+  try {
+    db = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+
+    let { data, error } = await db.auth.getSession();
+    if (error) throw error;
+
+    if (!data.session) {
+      const result = await db.auth.signInAnonymously();
+      if (result.error) throw result.error;
+      data.session = result.data.session;
+    }
+    user = data.session.user;
+
+    const profile = await db.from("chat_profiles")
+      .select("user_id,username").eq("user_id", user.id).maybeSingle();
+    if (profile.error) throw profile.error;
+
+    if (profile.data) {
+      myName = profile.data.username;
+      if (myName !== name) {
+        $("username").value = myName;
+        return say("این مرورگر قبلاً نام «" + myName + "» داشته؛ با همین نام وارد شو.");
+      }
+    } else {
+      const existing = await db.from("chat_profiles")
+        .select("user_id").eq("username", name).maybeSingle();
+      if (existing.error) throw existing.error;
+      if (existing.data) throw new Error("این نام قبلاً گرفته شده است.");
+
+      const created = await db.from("chat_profiles")
+        .insert({user_id:user.id, username:name});
+      if (created.error) throw created.error;
+      myName = name;
+    }
+
+    $("myName").textContent = myName;
+    $("setup").hidden = true;
+    $("chatArea").hidden = false;
+    say("وارد شدی! نام دوستت را وارد کن.");
+  } catch (e) {
+    console.error(e);
+    say("خطا: " + (e.message || "اتصال ناموفق بود"));
+  } finally {
+    $("startBtn").disabled = false;
+  }
+}
+
+async function openFriend() {
+  const name = $("recipient").value.trim().toLowerCase();
+  if (!valid(name)) return say("نام کاربری دوستت را درست وارد کن.");
+  if (name === myName) return say("نام کاربری شخص دیگری را وارد کن.");
+
+  try {
+    const result = await db.from("chat_profiles")
+      .select("user_id,username").eq("username", name).maybeSingle();
+    if (result.error) throw result.error;
+    if (!result.data) throw new Error("این نام پیدا نشد؛ دوستت باید اول وارد چت شود.");
+    friend = result.data;
+    await refresh();
+  } catch (e) {
+    say("خطا: " + e.message);
+  }
+}
+
+async function refresh() {
+  if (!friend) return say("اول گفتگو را باز کن.");
+  try {
+    const result = await db.from("chat_messages")
+      .select("id,sender_id,recipient_id,sender_name,message,created_at")
+      .or(
+        "and(sender_id.eq." + user.id + ",recipient_id.eq." + friend.user_id + ")," +
+        "and(sender_id.eq." + friend.user_id + ",recipient_id.eq." + user.id + ")"
+      )
+      .order("created_at", {ascending:true}).limit(100);
+
+    if (result.error) throw result.error;
+    const box = $("messages");
+    box.replaceChildren();
+
+    if (!result.data.length) box.textContent = "هنوز پیامی نیست.";
+
+    result.data.forEach(m => {
+      const item = document.createElement("div");
+      item.className = "msg" + (m.sender_id === user.id ? " mine" : "");
+      const sender = document.createElement("b");
+      sender.textContent = m.sender_name;
+      const body = document.createElement("div");
+      body.textContent = m.message;
+      const time = document.createElement("small");
+      time.textContent = new Date(m.created_at).toLocaleString("fa-IR");
+      item.append(sender, body, time);
+      box.append(item);
+    });
+    box.scrollTop = box.scrollHeight;
+    say("گفتگو با " + friend.username + " باز است.");
+  } catch (e) {
+    say("خطا در دریافت پیام: " + e.message);
+  }
+}
+
+async function send() {
+  const message = $("message").value.trim();
+  if (!friend) return say("اول گفتگو را باز کن.");
+  if (!message) return say("اول پیام را بنویس.");
+
+  $("sendBtn").disabled = true;
+  try {
+    const result = await db.from("chat_messages").insert({
+      sender_id:user.id,
+      recipient_id:friend.user_id,
+      sender_name:myName,
+      recipient_name:friend.username,
+      message
+    });
+    if (result.error) throw result.error;
+    $("message").value = "";
+    await refresh();
+  } catch (e) {
+    say("پیام ارسال نشد: " + e.message);
+  } finally {
+    $("sendBtn").disabled = false;
+  }
+}
+
+$("startBtn").addEventListener("click", start);
+$("openBtn").addEventListener("click", openFriend);
+$("refreshBtn").addEventListener("click", refresh);
+$("sendBtn").addEventListener("click", send);
+$("message").addEventListener("keydown", e => {
+  if (e.key === "Enter") send();
+});
+</script>
 </body>
 </html>
-
