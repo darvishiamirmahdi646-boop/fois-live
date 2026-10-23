@@ -1,132 +1,111 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FOIS by mahdi live</title>
-  <link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: #090611;
-      color: white;
-      font-family: 'Vazirmatn', sans-serif;
-    }
-    header {
-      background: #160d24;
-      border-bottom: 2px solid #922bff;
-      padding: 22px 15px;
-      text-align: center;
-    }
-    header h1 {
-      color: #c78aff;
-      font: 40px 'Lalezar', sans-serif;
-      margin: 0;
-    }
-    header p { color: #d7c4eb; margin-bottom: 0; }
-    nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 18px;
-      padding: 15px;
-      background: #100a1b;
-    }
-    nav a { color: white; text-decoration: none; }
-    nav a:hover { color: #c78aff; }
-    main { max-width: 900px; margin: auto; padding: 18px; }
-    .panel {
-      background: #160d24;
-      border: 1px solid #422064;
-      border-radius: 16px;
-      padding: 18px;
-      margin: 20px 0;
-      box-shadow: 0 0 18px #8b2bff12;
-    }
-    h2 {
-      color: #c78aff;
-      font: 27px 'Lalezar', sans-serif;
-      margin-top: 0;
-    }
-    .video {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%;
-      overflow: hidden;
-      border-radius: 12px;
-      background: #000;
-    }
-    .video iframe {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-    .btn {
-      display: inline-block;
-      background: #922bff;
-      color: white;
-      padding: 11px 18px;
-      border-radius: 10px;
-      text-decoration: none;
-      margin-top: 8px;
-    }
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #a995ba;
-      background: #100a1b;
-      margin-top: 30px;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FOIS by mahdi live</title>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090611;color:#fff;font-family:Vazirmatn,sans-serif}
+header{text-align:center;padding:25px 12px;background:#160d24;border-bottom:2px solid #a855f7}
+h1{font:45px Lalezar;color:#d8a4ff;margin:0}
+header p{margin:4px}
+nav{display:flex;justify-content:center;gap:22px;flex-wrap:wrap;padding:15px;background:#120a1d}
+nav a{color:#fff;text-decoration:none}
+nav a:hover{color:#d8a4ff}
+main{max-width:1000px;margin:auto;padding:15px}
+.intro,.video-card{background:#180e27;border:1px solid #512477;border-radius:16px;padding:16px;margin-bottom:18px}
+h2{font:28px Lalezar;color:#d8a4ff;margin:0 0 12px}
+.videos{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px}
+.player{position:relative;width:100%;aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden}
+.player iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.open{display:inline-block;color:#e3c5ff;margin-top:12px;text-decoration:none}
+footer{text-align:center;padding:25px;background:#120a1d;color:#cbb6dc}
+</style>
 </head>
 <body>
-  <header>
-    <h1>FOIS</h1>
-    <p>FOIS by mahdi live | دنیای گیمینگ تو</p>
-  </header>
+<header>
+<h1>FOIS</h1>
+<p>FOIS by mahdi live</p>
+<p>دنیای گیمینگ و ویدیوهای جذاب 🎮</p>
+</header>
+<nav>
+<a href="#home">خانه</a>
+<a href="#videos">ویدیوها</a>
+<a href="#about">درباره ما</a>
+</nav>
+<main>
+<section class="intro" id="home">
+<h2>💜 خوش اومدی!</h2>
+<p>به FOIS by mahdi live خوش اومدی؛ ویدیوها رو انتخاب کن و تماشا کن.</p>
+</section>
+<section id="videos">
+<h2>🎬 ویدیوها</h2>
+<div class="videos">
 
-  <nav>
-    <a href="#home">خانه</a>
-    <a href="#video">ویدیوی من</a>
-    <a href="#about">درباره سایت</a>
-  </nav>
+<div class="video-card">
+<h2>ویدیو ۱</h2>
+<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/gtjge06/vt/frame" title="ویدیو ۱" allowfullscreen loading="lazy"></iframe></div>
+<a class="open" href="https://www.aparat.com/v/gtjge06" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
+</div>
 
-  <main>
-    <section id="home" class="panel">
-      <h2>🎮 خوش اومدی!</h2>
-      <p>به سایت رسمی FOIS by mahdi live خوش اومدی.</p>
-      <p>اینجا ویدیوهای گیمینگ و محتوای جدید رو ببین!</p>
-      <a class="btn" href="#video">تماشای ویدیو</a>
-    </section>
+<div class="video-card">
+<h2>ویدیو ۲</h2>
+<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/ytnfz5f/vt/frame" title="ویدیو ۲" allowfullscreen loading="lazy"></iframe></div>
+<a class="open" href="https://www.aparat.com/v/ytnfz5f" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
+</div>
 
-    <section id="video" class="panel">
-      <h2>🎬 ویدیوی من</h2>
-      <p>ویدیوی آپارات من رو همین‌جا تماشا کن.</p>
-      <div class="video">
-        <iframe
-          src="https://www.aparat.com/video/video/embed/videohash/yzupnc2/vt/frame"
-          title="ویدیوی آپارات"
-          allowfullscreen
-          allow="autoplay; encrypted-media"
-        ></iframe>
-      </div>
-      <a class="btn" href="https://www.aparat.com/v/yzupnc2" target="_blank" rel="noopener">
-        باز کردن ویدیو در آپارات
-      </a>
-    </section>
+<div class="video-card">
+<h2>ویدیو ۳</h2>
+<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/iiu45zz/vt/frame" title="ویدیو ۳" allowfullscreen loading="lazy"></iframe></div>
+<a class="open" href="https://www.aparat.com/v/iiu45zz" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
+</div>
 
-    <section id="about" class="panel">
-      <h2>💜 درباره FOIS</h2>
-      <p>FOIS by mahdi live؛ جایی برای دیدن ویدیوهای من و محتوای گیمینگ.</p>
-    </section>
-  </main>
+<div class="video-card">
+<h2>ویدیو ۴</h2>
+<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/rbha0u8/vt/frame" title="ویدیو ۴" allowfullscreen loading="lazy"></iframe></div>
+<a class="open" href="https://www.aparat.com/v/rbha0u8" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
+</div>
 
-  <footer>
-    ساخته‌شده با 💜 برای FOIS by mahdi live
-  </footer>
+<div class="video-card">
+<h2>ویدیو ۵</h2>
+<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/mjd769m/vt/frame" title="ویدیو ۵" allowfullscreen loading="lazy"></iframe></div>
+<a class="open" href="https://www.aparat.com/v/mjd769m" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
+</div>
+
+<div class="video-card">
+<h2>ویدیو ۶</h2>
+<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/vyc344n/vt/frame" title="ویدیو ۶" allowfullscreen loading="lazy"></iframe></div>
+<a class="open" href="https://www.aparat.com/v/vyc344n" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
+</div>
+
+<div class="video-card">
+<h2>ویدیو ۷</h2>
+<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/jfp5389/vt/frame" title="ویدیو ۷" allowfullscreen loading="lazy"></iframe></div>
+<a class="open" href="https://www.aparat.com/v/jfp5389" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
+</div>
+
+<div class="video-card">
+<h2>ویدیو ۸</h2>
+<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/a13j4en/vt/frame" title="ویدیو ۸" allowfullscreen loading="lazy"></iframe></div>
+<a class="open" href="https://www.aparat.com/v/a13j4en" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
+</div>
+
+<div class="video-card">
+<h2>ویدیو ۹</h2>
+<div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/kae9h08/vt/frame" title="ویدیو ۹" allowfullscreen loading="lazy"></iframe></div>
+<a class="open" href="https://www.aparat.com/v/kae9h08" target="_blank" rel="noopener">باز کردن در آپارات ↗</a>
+</div>
+
+</div>
+</section>
+<section class="intro" id="about">
+<h2>درباره FOIS</h2>
+<p>FOIS by mahdi live؛ خونه‌ی ویدیوهای گیمینگ و سرگرمی 💜</p>
+</section>
+</main>
+<footer>ساخته‌شده با 💜 برای FOIS by mahdi live</footer>
 </body>
 </html>
+
