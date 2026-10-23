@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -62,8 +61,7 @@ footer{text-align:center;padding:25px;background:#120a1d;color:#cbb6dc}
 <div class="video-card"><h2>ویدیو ۱</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/gtjge06/vt/frame" title="ویدیو ۱" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/gtjge06" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
 <div class="video-card"><h2>ویدیو ۲</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/ytnfz5f/vt/frame" title="ویدیو ۲" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/ytnfz5f" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
 <div class="video-card"><h2>ویدیو ۳</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/iiu45zz/vt/frame" title="ویدیو ۳" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/iiu45zz" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
-<div class="video-card"><h2>ویدیو ۴</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/rbha0u8/vt/frame" title="ویدیو ۴" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/rbha0u8" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
-<div class="video-card"><h2>ویدیو ۵</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/mjd769m/vt/frame" title="ویدیو ۵" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/mjd769m" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
+<div class="video-card"><h2>ویدیو ۴</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/rbha0u8/vt/frame" title="ویدیو ۴" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/rbha0u8" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div><div class="video-card"><h2>ویدیو ۵</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/mjd769m/vt/frame" title="ویدیو ۵" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/mjd769m" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
 <div class="video-card"><h2>ویدیو ۶</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/vyc344n/vt/frame" title="ویدیو ۶" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/vyc344n" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
 <div class="video-card"><h2>ویدیو ۷</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/jfp5389/vt/frame" title="ویدیو ۷" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/jfp5389" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
 <div class="video-card"><h2>ویدیو ۸</h2><div class="player"><iframe src="https://www.aparat.com/video/video/embed/videohash/a13j4en/vt/frame" title="ویدیو ۸" allowfullscreen loading="lazy"></iframe></div><a class="open" href="https://www.aparat.com/v/a13j4en" target="_blank" rel="noopener">باز کردن در آپارات ↗</a></div>
@@ -131,9 +129,7 @@ async function start() {
 
     const profile = await db.from("chat_profiles")
       .select("user_id,username").eq("user_id", user.id).maybeSingle();
-    if (profile.error) throw profile.error;
-
-    if (profile.data) {
+    if (profile.error) throw profile.error;if (profile.data) {
       myName = profile.data.username;
       if (myName !== name) {
         $("username").value = myName;
@@ -236,9 +232,18 @@ async function send() {
   } catch (e) {
     say("پیام ارسال نشد: " + e.message);
   } finally {
-    $("sendBtn").disabled = false;import re, os, zipfile
-p='/mnt/data/FOIS_index.html'
-s=open(p,encoding='utf-8').read()
+    $("sendBtn").disabled = false;
+  }
+}
+
+$("startBtn").addEventListener("click", start);
+$("openBtn").addEventListener("click", openFriend);
+$("refreshBtn").addEventListener("click", refresh);
+$("sendBtn").addEventListener("click", send);
+$("message").addEventListener("keydown", e => {
+  if (e.key === "Enter") send();
+import re, os, zipfile
+p='/mnt/data/FOIS_index.html's=open(p,encoding='utf-8').read()
 marker='<section id="game"'
 idx=s.find(marker)
 insert='''<div class="platformer" style="margin:18px 0;padding:14px;border:1px solid #7546bd;border-radius:18px;background:#100b1c;color:#fff">
@@ -265,18 +270,17 @@ const levels=[
  {name:'دروازه نهایی',bg:'#30170b',plats:[[0,380,900,40],[100,320,120,16],[260,265,120,16],[420,315,120,16],[570,245,120,16],[730,300,120,16]],coin:[[140,285],[300,230],[460,280],[610,210],[770,265]],enemy:[[220,350],[490,280],[680,350]],flag:855}
 ];
 let player, levelCoins, enemies, platforms, flag;
-function loadLevel(){const l=levels[level];platforms=l.plats.map(a=>({x:a[0],y:a[1],w:a[2],h:a[3]}));levelCoins=l.coin.map(a=>({x:a[0],y:a[1],got:false}));enemies=l.enemy.map(a=>({x:a[0],y:a[1],w:30,h:30,dir:Math.random()>.5?1:-1,alive:true,base:a[0]}));flag=l.flag;player={x:25,y:330,w:27,h:38,vx:0,vy:0,on:false,inv:0};won=false;status.textContent=`مرحله ${level+1} از ۴ — ${l.name} | سکه: ${coins} | جان: ${lives}`;}
+function loadLevel(){const l=levels[level];platforms=l.plats.map(a=>({x:a[0],y:a[1],w:a[2],h:a[3]}));levelCoins=l.coin.map(a=>({x:a[0],y:a[1],got:false}));enemies=l.enemy.map(a=>({x:a[0],y:a[1],w:30,h:30,dir:Math.random()>.5?1:-1,alive:true,base:a[0]}));flag=l.flag;player={x:25,y:330,w:27,h:38,vx:0,vy:0,on:false,inv:0};won=false;status.textContent=مرحله ${level+1} از ۴ — ${l.name} | سکه: ${coins} | جان: ${lives};}
 function reset(){level=0;coins=0;lives=3;loadLevel();}
 function hit(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;}
 function update(){if(won)return;
-const l=levels[level]; player.vx=(keys.ArrowRight||keys.d||touch.right?3.8:0)-(keys.ArrowLeft||keys.a||touch.left?3.8:0);player.x+=player.vx;player.x=Math.max(0,Math.min(W-player.w,player.x));player.vy+=0.52;player.y+=player.vy;player.on=false;
+const l=levels[level]; player.vx=(keys.ArrowRightkeys.dtouch.right?3.8:0)-(keys.ArrowLeftkeys.atouch.left?3.8:0);player.x+=player.vx;player.x=Math.max(0,Math.min(W-player.w,player.x));player.vy+=0.52;player.y+=player.vy;player.on=false;
 for(const p of platforms){if(player.vy>=0&&player.x+player.w>p.x&&player.x<p.x+p.w&&player.y+player.h>=p.y&&player.y+player.h-p.vy<=p.y+8){player.y=p.y-player.h;player.vy=0;player.on=true;}}
 if(player.y>H+40){lives--; if(lives<=0){status.textContent='باختی! روی شروع دوباره بزن.';won=true;}else{player.x=25;player.y=320;player.vy=0;} }
-for(const c of levelCoins)if(!c.got&&hit(player,{x:c.x-9,y:c.y-9,w:18,h:18})){c.got=true;coins++;}
-for(const e of enemies){if(!e.alive)continue;e.x+=e.dir*1.1;if(Math.abs(e.x-e.base)>45)e.dir*=-1;if(hit(player,e)&&player.inv<=0){if(player.vy>1&&player.y+player.h-e.y<20){e.alive=false;player.vy=-8;coins+=2;}else{lives--;player.inv=75;player.vx=player.x<e.x?-5:5;player.vy=-5;if(lives<=0){won=true;status.textContent='باختی! روی شروع دوباره بزن.';}}}}
+for(const c of levelCoins)if(!c.got&&hit(player,{x:c.x-9,y:c.y-9,w:18,h:18})){c.got=true;coins++;}for(const e of enemies){if(!e.alive)continue;e.x+=e.dir*1.1;if(Math.abs(e.x-e.base)>45)e.dir*=-1;if(hit(player,e)&&player.inv<=0){if(player.vy>1&&player.y+player.h-e.y<20){e.alive=false;player.vy=-8;coins+=2;}else{lives--;player.inv=75;player.vx=player.x<e.x?-5:5;player.vy=-5;if(lives<=0){won=true;status.textContent='باختی! روی شروع دوباره بزن.';}}}}
 if(player.inv>0)player.inv--;
-if(player.x+player.w>flag&&levelCoins.every(c=>c.got)&&enemies.every(e=>!e.alive)){if(level<3){level++;loadLevel();}else{won=true;status.textContent=`🏆 آفرین! قهرمان شدی؛ ${coins} سکه جمع کردی. بازی سکوبازی تمام شد!`;}}
-else status.textContent=`مرحله ${level+1}/۴ — ${l.name} | سکه ${coins} | جان ${lives} | همه سکه‌ها و دشمن‌ها را تمام کن و به پرچم برس`;
+if(player.x+player.w>flag&&levelCoins.every(c=>c.got)&&enemies.every(e=>!e.alive)){if(level<3){level++;loadLevel();}else{won=true;status.textContent=🏆 آفرین! قهرمان شدی؛ ${coins} سکه جمع کردی. بازی سکوبازی تمام شد!;}}
+else status.textContent=مرحله ${level+1}/۴ — ${l.name} | سکه ${coins} | جان ${lives} | همه سکه‌ها و دشمن‌ها را تمام کن و به پرچم برس;
 }
 function draw(){const l=levels[level];ctx.fillStyle=l.bg;ctx.fillRect(0,0,W,H);
 for(let i=0;i<35;i++){ctx.fillStyle=i%2?'#7049a0':'#bba0ff';ctx.globalAlpha=.35;ctx.beginPath();ctx.arc((i*83)%W,(i*47)%300,2+(i%3),0,Math.PI*2);ctx.fill();}ctx.globalAlpha=1;
@@ -288,7 +292,7 @@ if(!(player.inv>0&&Math.floor(Date.now()/100)%2===0)){ctx.fillStyle='#7cf7ff';ct
 if(won&&level===3){ctx.fillStyle='rgba(0,0,0,.6)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#fff';ctx.font='bold 34px sans-serif';ctx.textAlign='center';ctx.fillText('قهرمان FOIS شدی!',W/2,H/2);ctx.textAlign='start';}
 }
 function loop(){update();draw();requestAnimationFrame(loop);}
-window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight',' ','ArrowUp'].includes(e.key))e.preventDefault();keys[e.key]=true;if((e.key===' '||e.key==='ArrowUp'||e.key==='w')&&player.on&&!won)player.vy=-10.5;});
+window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight',' ','ArrowUp'].includes(e.key))e.preventDefault();keys[e.key]=true;if((e.key===' 'e.key==='ArrowUp'e.key==='w')&&player.on&&!won)player.vy=-10.5;});
 window.addEventListener('keyup',e=>keys[e.key]=false);
 function bindHold(id,prop){const b=document.getElementById(id);b.addEventListener('pointerdown',e=>{e.preventDefault();touch[prop]=true;b.setPointerCapture(e.pointerId)});['pointerup','pointercancel','lostpointercapture'].forEach(ev=>b.addEventListener(ev,()=>touch[prop]=false));}
 bindHold('leftBtn','left');bindHold('rightBtn','right');
@@ -302,3 +306,7 @@ open('/mnt/data/FOIS_index.html','w',encoding='utf-8').write(s)
 with zipfile.ZipFile('/mnt/data/FOIS_website_complete.zip','w',zipfile.ZIP_DEFLATED) as z:
     z.write('/mnt/data/FOIS_index.html','index.html')
 print("updated",len(s))
+});
+</script>
+</body>
+</html>
