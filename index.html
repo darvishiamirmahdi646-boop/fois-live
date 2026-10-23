@@ -1,130 +1,62 @@
-
-!doctype html>
+<!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080808">
-<meta name="description" content="FOIS by mahdi live؛ خانه‌ی گیمینگ برای استریم‌ها، کلیپ‌ها و گیمرها.">
-<title>FOIS by mahdi live | خانه‌ی گیمرها</title>
-<style>
-:root{--bg:#080808;--panel:#121212;--panel2:#191919;--line:#2b2b2b;--text:#f5f5f5;--muted:#a5a5a5;--white:#fff;--accent:#d8ff3e;--radius:18px}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(ellipse at top,#202020 0,#080808 42rem);color:var(--text);font-family:Tahoma,Arial,sans-serif;line-height:1.7}
-a{color:inherit;text-decoration:none}
-button,input{font:inherit}
-.wrap{width:min(1120px,100% - 28px);margin:auto}
-header{position:sticky;top:0;z-index:10;background:#090909eF;border-bottom:1px solid #262626;backdrop-filter:blur(14px)}
-.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:12px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.2px}
-.logo{width:39px;height:39px;border-radius:12px;display:grid;place-items:center;background:var(--accent);color:#080808;font-weight:1000;font-size:19px;box-shadow:0 0 24px #d8ff3e22}
-.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:1px;font-weight:600;direction:ltr;text-align:right}
-.navlinks{display:flex;gap:18px;color:#c6c6c6;font-size:13px}
-.navlinks a:hover{color:var(--accent)}
-.pill{border:1px solid #383838;border-radius:999px;padding:8px 13px;font-size:12px;color:#eee;background:#151515}
-.hero{padding:48px 0 30px;display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center}
-.kicker{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:1.5px}
-h1{font-size:clamp(34px,6vw,62px);line-height:1.15;margin:12px 0 16px;letter-spacing:-1.5px}
-h1 span{color:var(--accent)}
-.lead{color:#bcbcbc;max-width:560px;font-size:15px}
-.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.btn{display:inline-flex;justify-content:center;align-items:center;gap:8px;border:1px solid #444;background:#181818;color:white;padding:12px 17px;border-radius:12px;font-weight:800;font-size:13px;cursor:pointer}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:#101010}
-.btn:hover{transform:translateY(-1px)}
-.hero-art{min-height:270px;border:1px solid #303030;border-radius:26px;background:linear-gradient(145deg,#242424,#101010 65%);padding:22px;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
-.hero-art:before{content:"";position:absolute;width:230px;height:230px;border:1px solid #d8ff3e55;border-radius:50%;left:-55px;top:-50px;box-shadow:0 0 0 24px #d8ff3e09,0 0 0 50px #d8ff3e06}
-.art-top,.art-bottom{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:10px}
-.live-dot{display:inline-flex;align-items:center;gap:7px;font-size:11px;color:#fff;background:#b91c1c;padding:5px 9px;border-radius:7px;font-weight:900}
-.live-dot:before{content:"";width:6px;height:6px;background:#fff;border-radius:50%;box-shadow:0 0 10px white}
-.bigmark{position:relative;z-index:1;text-align:center;font-weight:1000;font-size:clamp(60px,10vw,100px);letter-spacing:-7px;color:#fff;text-shadow:5px 5px 0 #d8ff3e;direction:ltr}
-.art-bottom{color:#bdbdbd;font-size:12px}
-.section{padding:26px 0}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:16px}
-h2{font-size:22px;margin:0}
-.sub{font-size:12px;color:var(--muted);margin-top:3px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.card{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:linear-gradient(150deg,#171717,#101010);min-width:0}
-.thumb{height:145px;background:linear-gradient(135deg,#292929,#0e0e0e);display:grid;place-items:center;position:relative;border-bottom:1px solid #292929}
-.thumb span{font-size:44px;filter:drop-shadow(0 0 18px #d8ff3e22)}
-.tag{position:absolute;top:10px;right:10px;background:#0b0b0bdd;border:1px solid #424242;border-radius:7px;padding:3px 7px;font-size:10px;color:#eee}
-.card-body{padding:13px}
-.card h3{font-size:15px;margin:0 0 5px}
-.card p{font-size:12px;color:var(--muted);margin:0 0 12px}
-.meta{display:flex;justify-content:space-between;align-items:center;color:#aaa;font-size:11px;gap:6px}
-.mini-btn{border:1px solid #3a3a3a;background:#202020;color:#fff;border-radius:8px;padding:6px 9px;font-size:11px;cursor:pointer}
-.empty-note{color:#888;font-size:11px;margin-top:12px}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0 0}
-.stat{border:1px solid #2c2c2c;border-radius:14px;padding:14px;background:#101010}
-.stat b{display:block;font-size:22px;color:var(--accent)}
-.stat span{font-size:11px;color:#aaa}
-.community{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.panel{background:#111;border:1px solid var(--line);border-radius:var(--radius);padding:18px}
-.panel h3{margin:0 0 6px;font-size:16px}
-.panel p{margin:0 0 13px;color:#aaa;font-size:12px}
-.joinrow{display:flex;gap:8px}
-input{width:100%;min-width:0;border:1px solid #373737;background:#080808;color:#fff;border-radius:10px;padding:11px 12px;outline:none}
-input:focus{border-color:var(--accent)}
-footer{margin-top:30px;border-top:1px solid #292929;padding:24px 0 35px;color:#888;font-size:11px}
-.footerrow{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.toast{position:fixed;bottom:18px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#f4f4f4;color:#111;padding:11px 16px;border-radius:12px;font-size:13px;font-weight:800;z-index:30;transition:.25s;box-shadow:0 8px 30px #0008}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:700px){.wrap{width:min(100% - 22px,520px)}.navlinks{display:none}.hero{grid-template-columns:1fr;padding-top:32px;gap:18px}.hero-art{min-height:215px}.cards{grid-template-columns:1fr;gap:11px}.thumb{height:125px}.community{grid-template-columns:1fr}.section{padding:20px 0}.section-head{align-items:start;flex-direction:column}.stats{gap:7px}.stat{padding:10px}.stat b{font-size:19px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FOIS by mahdi live</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lalezar&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: #090711;
+      color: white;
+      font-family: 'Lalezar', sans-serif;
+      text-align: center;
+    }
+    header {
+      padding: 35px 15px;
+      background: linear-gradient(135deg, #190b2b, #4c1d95);
+      border-bottom: 2px solid #a855f7;
+    }
+    h1 { color: #d8b4fe; font-size: 38px; }
+    p { font-size: 20px; }
+    .card {
+      margin: 20px auto;
+      padding: 24px;
+      max-width: 420px;
+      background: #171121;
+      border: 1px solid #9333ea;
+      border-radius: 18px;
+      box-shadow: 0 0 18px #6b21a855;
+    }
+    a {
+      display: inline-block;
+      background: #9333ea;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+    }
+    footer { padding: 25px; color: #c084fc; }
+  </style>
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <a class="brand" href="#home" aria-label="FOIS home"><span class="logo">F</span><span>FOIS <small>BY MAHDI LIVE</small></span></a>
-    <nav class="navlinks"><a href="#streams">استریم‌ها</a><a href="#clips">کلیپ‌ها</a><a href="#community">جامعه گیمرها</a></nav>
-    <a class="pill" href="#community">ورود به جمع ما ↗</a>
-  </div>
-</header>
-<main class="wrap" id="home">
-  <section class="hero">
-    <div>
-      <div class="kicker">YOUR GAME. YOUR COMMUNITY.</div>
-      <h1>بازی کن.<br><span>دیده شو.</span></h1>
-      <p class="lead">به FOIS by mahdi live خوش اومدی؛ جایی برای گیمرها، لحظه‌های خفن و کلیپ‌هایی که باید دوباره ببینی. این نسخه‌ی اولیه‌ست؛ ساده، سریع و مخصوص گوشی.</p>
-      <div class="actions"><a class="btn primary" href="#streams">🎮 دیدن استریم‌ها</a><a class="btn" href="#clips">▶ دیدن کلیپ‌ها</a></div>
-      <div class="stats"><div class="stat"><b>24/7</b><span>حال‌وهوای گیمینگ</span></div><div class="stat"><b>FOIS</b><span>ساخته‌شده برای گیمرها</span></div><div class="stat"><b>v1.0</b><span>نسخه‌ی شروع</span></div></div>
+  <header>
+    <h1>FOIS by mahdi live</h1>
+    <p>دنیای گیمینگ تو از اینجا شروع می‌شه 🎮</p>
+  </header>
+  <main>
+    <div class="card">
+      <h2>🎮 به سایت من خوش اومدی!</h2>
+      <p>اینجا قراره دنیای گیم و پخش زنده رو تجربه کنی.</p>
+      <a href="#">به‌زودی...</a>
     </div>
-    <div class="hero-art" aria-label="FOIS gaming graphic">
-      <div class="art-top"><span class="pill">FOIS NETWORK</span><span class="live-dot">LIVE ZONE</span></div>
-      <div class="bigmark">FOIS</div>
-      <div class="art-bottom"><span>PLAY • WATCH • CONNECT</span><span>EST. 2026</span></div>
+    <div class="card">
+      <h2>🔴 پخش زنده</h2>
+      <p>بخش پخش زنده به‌زودی فعال می‌شه.</p>
     </div>
-  </section>
-  <section class="section" id="streams">
-    <div class="section-head"><div><h2>🔴 استریم‌ها</h2><div class="sub">برای شروع، چند کارت نمونه گذاشتیم.</div></div><span class="pill">DEMO</span></div>
-    <div class="cards">
-      <article class="card"><div class="thumb"><span>🎮</span><span class="tag">نمونه</span></div><div class="card-body"><h3>اتاق استریم گیمینگ</h3><p>جای نمایش پخش زنده‌ی شما</p><div class="meta"><span>هنوز آفلاین</span><button class="mini-btn" onclick="demo('پخش زنده هنوز وصل نشده؛ بعداً لینک استریم را اضافه می‌کنیم.')">مشاهده</button></div></div></article>
-      <article class="card"><div class="thumb"><span>⚔️</span><span class="tag">نمونه</span></div><div class="card-body"><h3>نبردهای آنلاین</h3><p>بهترین لحظه‌های رقابتی</p><div class="meta"><span>منتظر محتوا</span><button class="mini-btn" onclick="demo('این بخش آماده‌ی اضافه‌کردن لینک ویدیو است.')">مشاهده</button></div></div></article>
-      <article class="card"><div class="thumb"><span>🏆</span><span class="tag">به‌زودی</span></div><div class="card-body"><h3>اتاق قهرمان‌ها</h3><p>استریم‌های منتخب جامعه</p><div class="meta"><span>نسخه‌ی آینده</span><button class="mini-btn" onclick="demo('این قابلیت در نسخه‌ی بعدی تکمیل می‌شود.')">جزئیات</button></div></div></article>
-    </div>
-  </section>
-  <section class="section" id="clips">
-    <div class="section-head"><div><h2>⚡ کلیپ‌های خفن</h2><div class="sub">کلیپ‌های کوتاه خودت را بعداً اینجا قرار بده.</div></div><span class="pill">CLIPS</span></div>
-    <div class="cards">
-      <article class="card"><div class="thumb"><span>🔥</span><span class="tag">SHORTS</span></div><div class="card-body"><h3>لحظه‌ی باورنکردنی</h3><p>کلیپ نمونه — هنوز ویدیویی اضافه نشده.</p><div class="meta"><span>00:15</span><button class="mini-btn" onclick="demo('برای نمایش کلیپ واقعی، لینک ویدیوی خودت را اضافه کن.')">پخش کلیپ</button></div></div></article>
-      <article class="card"><div class="thumb"><span>💥</span><span class="tag">HIGHLIGHT</span></div><div class="card-body"><h3>بهترین حرکت بازی</h3><p>لحظه‌های برتر بازیکن‌ها</p><div class="meta"><span>00:22</span><button class="mini-btn" onclick="demo('این کارت فعلاً نمایشی است.')">پخش کلیپ</button></div></div></article>
-      <article class="card"><div class="thumb"><span>👑</span><span class="tag">TOP PLAY</span></div><div class="card-body"><h3>حرکت طلایی هفته</h3><p>کلیپ برتر جامعه FOIS</p><div class="meta"><span>00:10</span><button class="mini-btn" onclick="demo('به‌زودی کلیپ‌های واقعی را اینجا می‌بینیم.')">پخش کلیپ</button></div></div></article>
-    </div>
-  </section>
-  <section class="section" id="community">
-    <div class="section-head"><div><h2>🖤 جامعه‌ی FOIS</h2><div class="sub">اسم گیمرت را وارد کن و برای جمع گیمرها آماده شو.</div></div></div>
-    <div class="community">
-      <div class="panel"><h3>ساخت پروفایل نمایشی</h3><p>این فرم فعلاً روی همین دستگاه نمایشی است و اطلاعات را به سرور نمی‌فرستد.</p><form id="profileForm" class="joinrow"><input id="gamerName" maxlength="24" placeholder="اسم گیمرت..." aria-label="اسم گیمرت" required><button class="btn primary" type="submit">ثبت</button></form><div id="profileResult" class="empty-note">هنوز پروفایلی ثبت نشده.</div></div>
-      <div class="panel"><h3>به‌زودی در FOIS</h3><p>ویژگی‌هایی که می‌توانیم در مرحله‌های بعد اضافه کنیم:</p><div class="meta" style="margin:9px 0"><span>✓ پخش زنده‌ی واقعی</span><span>01</span></div><div class="meta" style="margin:9px 0"><span>✓ چت بین کاربران</span><span>02</span></div><div class="meta" style="margin:9px 0"><span>✓ حساب کاربری و دنبال‌کردن</span><span>03</span></div><div class="empty-note">برای این قابلیت‌ها به سرویس آنلاین و تنظیمات بیشتر نیاز است.</div></div>
-    </div>
-  </section>
-</main>
-<footer><div class="wrap footerrow"><span>© 2026 FOIS by mahdi live</span><span>ساخته‌شده با 🖤 برای گیمرها</span><a href="#home">بازگشت به بالا ↑</a></div></footer>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script>
-let toastTimer;
-function demo(message){const t=document.getElementById('toast');t.textContent=message;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3200)}
-document.getElementById('profileForm').addEventListener('submit',function(e){e.preventDefault();const name=document.getElementById('gamerName').value.trim();if(!name)return;document.getElementById('profileResult').textContent='🎮 گیمر '+name+'؛ پروفایل نمایشی ساخته شد!';demo('پروفایل نمایشی ساخته شد؛ هنوز آنلاین نیست.')});
-</script>
+  </main>
+  <footer>ساخته‌شده با عشق توسط mahdi 💜</footer>
 </body>
 </html>
