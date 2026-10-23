@@ -246,7 +246,73 @@ $("refreshBtn").addEventListener("click", refresh);
 $("sendBtn").addEventListener("click", send);
 $("message").addEventListener("keydown", e => {
   if (e.key === "Enter") send();
-});
+});import re, os, zipfile
+p='/mnt/data/FOIS_index.html'
+s=open(p,encoding='utf-8').read()
+marker='<section id="game"'
+idx=s.find(marker)
+insert='''<div class="platformer" style="margin:18px 0;padding:14px;border:1px solid #7546bd;border-radius:18px;background:#100b1c;color:#fff">
+<h3 style="margin:0 0 8px;color:#d9b8ff">🎮 بازی واقعی FOIS؛ حرکت، پرش و عبور از سکوها</h3>
+<p style="margin:0 0 10px;font-size:14px;color:#d8cce8">با کیبورد: ← → یا A/D برای حرکت، Space برای پرش. در گوشی از دکمه‌های پایین استفاده کن. سکه‌ها را جمع کن، از دشمن‌ها رد شو و به صندوق پایان برس!</p>
+<canvas id="foisCanvas" width="900" height="420" aria-label="بازی سکوبازی FOIS" style="display:block;width:100%;height:auto;aspect-ratio:15/7;background:#21113a;border:1px solid #a77bff;border-radius:12px;touch-action:none"></canvas>
+<div style="display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin:12px 0">
+<button type="button" id="leftBtn" class="btn">⬅️ چپ</button><button type="button" id="jumpBtn" class="btn">⬆️ پرش</button><button type="button" id="rightBtn" class="btn">➡️ راست</button><button type="button" id="restartPlatformer" class="btn">🔄 شروع دوباره</button>
+</div>
+<div id="platformerStatus" role="status" style="text-align:center;font-weight:bold;color:#e4c9ff">مرحله ۱ از ۴ — سکه‌ها را جمع کن و به پرچم برس!</div>
+</div>
+'''
+s=s[:idx]+insert+s[idx:]
+script=r'''
+// FOIS platform game: keyboard + touch controls
+(()=> {
+const canvas=document.getElementById('foisCanvas'); if(!canvas)return;
+const ctx=canvas.getContext('2d'), status=document.getElementById('platformerStatus');
+const W=900,H=420; let level=0, coins=0, lives=3, won=false, keys={}, touch={left:false,right:false};
+const levels=[
+ {name:'جنگل بنفش',bg:'#241044',plats:[[0,380,900,40],[140,315,150,16],[350,260,140,16],[560,315,150,16]],coin:[[90,345],[200,280],[410,225],[620,280],[760,345]],enemy:[[470,350]],flag:840},
+ {name:'غار کریستالی',bg:'#102642',plats:[[0,380,900,40],[100,320,120,16],[280,270,130,16],[470,220,130,16],[650,300,140,16]],coin:[[150,285],[330,235],[520,185],[700,265],[810,345]],enemy:[[390,350],[720,270]],flag:850},
+ {name:'قلعه سایه‌ها',bg:'#30122e',plats:[[0,380,900,40],[130,320,120,16],[300,260,120,16],[470,310,120,16],[620,230,120,16],[770,300,100,16]],coin:[[170,285],[340,225],[510,275],[660,195],[810,265]],enemy:[[250,350],[540,280],[730,200]],flag:855},
+ {name:'دروازه نهایی',bg:'#30170b',plats:[[0,380,900,40],[100,320,120,16],[260,265,120,16],[420,315,120,16],[570,245,120,16],[730,300,120,16]],coin:[[140,285],[300,230],[460,280],[610,210],[770,265]],enemy:[[220,350],[490,280],[680,350]],flag:855}
+];
+let player, levelCoins, enemies, platforms, flag;
+function loadLevel(){const l=levels[level];platforms=l.plats.map(a=>({x:a[0],y:a[1],w:a[2],h:a[3]}));levelCoins=l.coin.map(a=>({x:a[0],y:a[1],got:false}));enemies=l.enemy.map(a=>({x:a[0],y:a[1],w:30,h:30,dir:Math.random()>.5?1:-1,alive:true,base:a[0]}));flag=l.flag;player={x:25,y:330,w:27,h:38,vx:0,vy:0,on:false,inv:0};won=false;status.textContent=`مرحله ${level+1} از ۴ — ${l.name} | سکه: ${coins} | جان: ${lives}`;}
+function reset(){level=0;coins=0;lives=3;loadLevel();}
+function hit(a,b){return a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;}
+function update(){if(won)return;
+const l=levels[level]; player.vx=(keys.ArrowRight||keys.d||touch.right?3.8:0)-(keys.ArrowLeft||keys.a||touch.left?3.8:0);player.x+=player.vx;player.x=Math.max(0,Math.min(W-player.w,player.x));player.vy+=0.52;player.y+=player.vy;player.on=false;
+for(const p of platforms){if(player.vy>=0&&player.x+player.w>p.x&&player.x<p.x+p.w&&player.y+player.h>=p.y&&player.y+player.h-p.vy<=p.y+8){player.y=p.y-player.h;player.vy=0;player.on=true;}}
+if(player.y>H+40){lives--; if(lives<=0){status.textContent='باختی! روی شروع دوباره بزن.';won=true;}else{player.x=25;player.y=320;player.vy=0;} }
+for(const c of levelCoins)if(!c.got&&hit(player,{x:c.x-9,y:c.y-9,w:18,h:18})){c.got=true;coins++;}
+for(const e of enemies){if(!e.alive)continue;e.x+=e.dir*1.1;if(Math.abs(e.x-e.base)>45)e.dir*=-1;if(hit(player,e)&&player.inv<=0){if(player.vy>1&&player.y+player.h-e.y<20){e.alive=false;player.vy=-8;coins+=2;}else{lives--;player.inv=75;player.vx=player.x<e.x?-5:5;player.vy=-5;if(lives<=0){won=true;status.textContent='باختی! روی شروع دوباره بزن.';}}}}
+if(player.inv>0)player.inv--;
+if(player.x+player.w>flag&&levelCoins.every(c=>c.got)&&enemies.every(e=>!e.alive)){if(level<3){level++;loadLevel();}else{won=true;status.textContent=`🏆 آفرین! قهرمان شدی؛ ${coins} سکه جمع کردی. بازی سکوبازی تمام شد!`;}}
+else status.textContent=`مرحله ${level+1}/۴ — ${l.name} | سکه ${coins} | جان ${lives} | همه سکه‌ها و دشمن‌ها را تمام کن و به پرچم برس`;
+}
+function draw(){const l=levels[level];ctx.fillStyle=l.bg;ctx.fillRect(0,0,W,H);
+for(let i=0;i<35;i++){ctx.fillStyle=i%2?'#7049a0':'#bba0ff';ctx.globalAlpha=.35;ctx.beginPath();ctx.arc((i*83)%W,(i*47)%300,2+(i%3),0,Math.PI*2);ctx.fill();}ctx.globalAlpha=1;
+for(const p of platforms){ctx.fillStyle='#7950a8';ctx.fillRect(p.x,p.y,p.w,p.h);ctx.fillStyle='#c5a6ff';ctx.fillRect(p.x,p.y,p.w,4);}
+for(const c of levelCoins)if(!c.got){ctx.fillStyle='#ffd34f';ctx.beginPath();ctx.arc(c.x,c.y,9,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff2ad';ctx.fillRect(c.x-2,c.y-6,4,12);}
+for(const e of enemies)if(e.alive){ctx.fillStyle='#f05288';ctx.fillRect(e.x,e.y,e.w,e.h);ctx.fillStyle='#fff';ctx.fillRect(e.x+6,e.y+7,5,5);ctx.fillRect(e.x+19,e.y+7,5,5);ctx.fillStyle='#31102c';ctx.fillRect(e.x+8,e.y+21,14,4);}
+ctx.fillStyle='#fff';ctx.fillRect(flag,300,5,80);ctx.fillStyle='#4cff9a';ctx.beginPath();ctx.moveTo(flag+5,300);ctx.lineTo(flag+42,313);ctx.lineTo(flag+5,326);ctx.fill();
+if(!(player.inv>0&&Math.floor(Date.now()/100)%2===0)){ctx.fillStyle='#7cf7ff';ctx.fillRect(player.x,player.y,player.w,player.h);ctx.fillStyle='#29204a';ctx.fillRect(player.x+5,player.y+8,5,5);ctx.fillRect(player.x+17,player.y+8,5,5);ctx.fillStyle='#ffcf9f';ctx.fillRect(player.x+4,player.y-7,19,8);}
+if(won&&level===3){ctx.fillStyle='rgba(0,0,0,.6)';ctx.fillRect(0,0,W,H);ctx.fillStyle='#fff';ctx.font='bold 34px sans-serif';ctx.textAlign='center';ctx.fillText('قهرمان FOIS شدی!',W/2,H/2);ctx.textAlign='start';}
+}
+function loop(){update();draw();requestAnimationFrame(loop);}
+window.addEventListener('keydown',e=>{if(['ArrowLeft','ArrowRight',' ','ArrowUp'].includes(e.key))e.preventDefault();keys[e.key]=true;if((e.key===' '||e.key==='ArrowUp'||e.key==='w')&&player.on&&!won)player.vy=-10.5;});
+window.addEventListener('keyup',e=>keys[e.key]=false);
+function bindHold(id,prop){const b=document.getElementById(id);b.addEventListener('pointerdown',e=>{e.preventDefault();touch[prop]=true;b.setPointerCapture(e.pointerId)});['pointerup','pointercancel','lostpointercapture'].forEach(ev=>b.addEventListener(ev,()=>touch[prop]=false));}
+bindHold('leftBtn','left');bindHold('rightBtn','right');
+document.getElementById('jumpBtn').addEventListener('pointerdown',e=>{e.preventDefault();if(player.on&&!won)player.vy=-10.5;});
+document.getElementById('restartPlatformer').addEventListener('click',reset);
+loadLevel();loop();
+})();
+'''
+s=s.replace('</body>', '<script>'+script+'</script>\n</body>')
+open('/mnt/data/FOIS_index.html','w',encoding='utf-8').write(s)
+with zipfile.ZipFile('/mnt/data/FOIS_website_complete.zip','w',zipfile.ZIP_DEFLATED) as z:
+    z.write('/mnt/data/FOIS_index.html','index.html')
+print("updated",len(s))
+
 </script>
 </body>
 </html>
